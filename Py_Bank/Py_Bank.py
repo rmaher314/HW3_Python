@@ -1,21 +1,26 @@
+import os
 import csv
 
 #Accessing the csv file.
-
 bank_data = os.path.join(".", "budget_data.csv")
 print(bank_data, type(bank_data))
+
 #Opening the file as a reader.
 #with open(output_path, 'r') as csvfile:
 with open(bank_data) as csvfile:
     csvreader = csv.reader(csvfile, delimiter=',')
-#csv_header = next(csvreader)
-#print(f"CSV Header: {csv_header}"  )
+    
+    csv_header = next(csvreader)
+    print(f"Header: {csv_header}"  )
+    
     for row in csvreader:
-            print(row)
-#Define the two variables in the document.
-#row[0] == month
-#row[1] == profit_loses
+           print(row)
 
+
+#Define the two variables in the document.
+def month = row[0]
+def profit_loses = row[1] 
+    print(month)
 
 #Total count of months (column 1)- will need to do a count of all of the months should equal 86.
        #def Total_Months len(month)
