@@ -12,15 +12,31 @@ with open(bank_data) as csvfile:
     
     csv_header = next(csvreader)
     print(f"Header: {csv_header}"  )
-    
-    for row in csvreader:
-           print(row)
 
+#Counting the number of months and total
+    month_counter = 0
+    profit_total = 0
+    diff = 0
+    prev_val = 0
+    total_diff = 0
+    
+#for reader 
+    for row in csvreader:
+        month_counter = (month_counter + 1)
+        profit_total = (profit_total + int(row[1]))
+        if month_counter != 1:
+            diff = (int(row[1]) - int(prev_val))
+        total_diff = (total_diff + diff)
+        prev_val= int(row[1])
+    average_change = total_diff/month_counter
+    print(f"Total Months: " + str(month_counter))
+    print(f"Total Profit: {profit_total}" )
+    print(f"Average Change:  {average_change}")    
 
 #Define the two variables in the document.
-def month = row[0]
-def profit_loses = row[1] 
-    print(month)
+#def month = row[0]
+#def profit_loses = row[1] 
+    #print(month)
 
 #Total count of months (column 1)- will need to do a count of all of the months should equal 86.
        #def Total_Months len(month)
