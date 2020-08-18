@@ -31,9 +31,11 @@ with open(bank_data) as csvfile:
     average_change = total_diff/(month_counter - 1)
     average_change = str(round(average_change, 2))
     #This one is not quite right amount is 
-    greatest_increase = (max(row[1]))
+    greatest_increase = max(row[1])
     greatest_decrease = (min(row[1]))
     month= (row[0])
+    print("Financial Analysis")
+    print("-----------------------------")
     print(f"Total Months: " + str(month_counter))
     print(f"Total Profit: ${profit_total}" )
     print(f"Average Change:  ${average_change}")    
