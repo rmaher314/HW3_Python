@@ -2,8 +2,11 @@ import os
 import csv
 
 #Accessing the csv file.
-bank_data = os.path.join(".", "budget_data.csv")
-print(bank_data, type(bank_data))
+bank_data = os.path.join("Resource_Folder","budget_data.csv")
+#print(bank_data, type(bank_data))
+
+#Exporting to a text file.
+financial_analysis = os.path.join("Analysis_Folder","Financial_Analysis.txt")
 
 #Opening the file as a reader.
 #with open(output_path, 'r') as csvfile:
@@ -39,16 +42,24 @@ with open(bank_data) as csvfile:
                 least_month = row[0]      
         total_diff = (total_diff + diff)
         prev_val= int(row[1])
-    
+          
     average_change = total_diff/(month_counter - 1)
     average_change = str(round(average_change, 2))
 
 #Final print statements
-    print("Financial Analysis")
-    print("-----------------------------")
-    print(f"Total Months: " + str(month_counter))
-    print(f"Total Profit: ${profit_total}" )
-    print(f"Average Change:  ${average_change}")    
-    print(f"Greatest Increase in Profits:  {great_month} ${greatest_increase}")
-    print(f"Greatest Decrease in Profits:  {least_month} ${greatest_decrease}")
+Analysis = (
+    f"Financial Analysis\n"
+    f"-----------------------------\n"
+    f"Total Months:   {str(month_counter)}\n"
+    f"Total Profit: ${profit_total}\n"
+    f"Average Change:  ${average_change}\n"    
+    f"Greatest Increase in Profits:  {great_month} ${greatest_increase}\n"
+    f"Greatest Decrease in Profits:  {least_month} ${greatest_decrease}\n")
 
+# Open the file using "write" mode. Specify the variable to hold the contents
+print(Analysis)
+with open(financial_analysis, 'w') as txt_file:
+
+    # Initialize txt.writer
+    txt_file.write(Analysis)
+    
