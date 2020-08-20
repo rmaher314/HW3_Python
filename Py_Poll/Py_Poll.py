@@ -42,10 +42,10 @@ with open(election_data) as csvfile:
         if row[2] == "O'Tooley":
             otooley_counter =( otooley_counter +1)
 #Percentage of votes
-    kahan_percent = (khan_counter/total_votes) *100
-    correy_percentage = (correy_counter/total_votes)* 100
-    li_percentage = (li_counter/total_votes)*100
-    otooley_percentage =(otooley_counter/total_votes)*100
+    khan_percent = format(((khan_counter/total_votes) *100),'.3f')
+    correy_percentage = format(((correy_counter/total_votes)* 100),'.3f')
+    li_percentage = format(((li_counter/total_votes)*100),'.3f')
+    otooley_percentage = format(((otooley_counter/total_votes)*100),'.3f')
 
  # Determine percent of review left to 2 decimal places
         #percent = round(int(row[6]) / int(row[5]), 2)
@@ -56,7 +56,9 @@ with open(election_data) as csvfile:
     print(f"-----------------------------")
     print(f"Total Votes:   {str(total_votes)}")
     print(f"-----------------------------")
-    print(f"Khan: {kahan_percent}% ({khan_counter})")
+    print(f"Khan: {khan_percent}% ({khan_counter})")
     print(f"Correy: {correy_percentage}% ({correy_counter})")
     print(f"Li: {li_percentage}% ({li_counter})")
     print(f"O'Tooley:  {otooley_percentage}% ({otooley_counter})")
+    print(f"-----------------------------")
+    
