@@ -23,6 +23,8 @@ with open(election_data) as csvfile:
     otooley_counter = 0  
     total_votes = 0
     candidate = str(election_data[2])
+    most_votes = 0
+    winner = ""
 
 #Percentage of votes
     #kahan_percent = (khan_counter/total_votes) *100
@@ -47,18 +49,37 @@ with open(election_data) as csvfile:
     li_percentage = format(((li_counter/total_votes)*100),'.3f')
     otooley_percentage = format(((otooley_counter/total_votes)*100),'.3f')
 
- # Determine percent of review left to 2 decimal places
-        #percent = round(int(row[6]) / int(row[5]), 2)
-        #review_percent.append(percent)
+ # Determine the winner:
+    most_votes = khan_counter
+    winner = "Khan"
+    if most_votes < correy_counter:
+        most_votes = correy_counter
+        winner = "Correy"
+    if most_votes < li_counter:
+        most_votes = li_counter
+        winner = "Li"
+    if most_votes < otooley_counter:
+        most_votes = otooley_counter
+        winner = "O'Tooley"
 
 #Final Print Statements
-    print(f"Election Results")
-    print(f"-----------------------------")
-    print(f"Total Votes:   {str(total_votes)}")
-    print(f"-----------------------------")
-    print(f"Khan: {khan_percent}% ({khan_counter})")
-    print(f"Correy: {correy_percentage}% ({correy_counter})")
-    print(f"Li: {li_percentage}% ({li_counter})")
-    print(f"O'Tooley:  {otooley_percentage}% ({otooley_counter})")
-    print(f"-----------------------------")
-    
+Results = (
+    f"Election Results\n"
+    f"-----------------------------\n"
+    f"Total Votes:   {str(total_votes)}\n"
+    f"-----------------------------\n"
+    f"Khan: {khan_percent}% ({khan_counter})\n"
+    f"Correy: {correy_percentage}% ({correy_counter})\n"
+    f"Li: {li_percentage}% ({li_counter})\n"
+    f"O'Tooley:  {otooley_percentage}% ({otooley_counter})\n"
+    f"-----------------------------\n"
+    f"Winner: {winner}\n"
+    f"-----------------------------\n")
+
+
+# Open the file using "write" mode. Specify the variable to hold the contents
+print(Results)
+with open(election_results, 'w') as txt_file:
+
+    # Initialize txt.writer
+    txt_file.write(Results)
