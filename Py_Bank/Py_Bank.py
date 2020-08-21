@@ -27,7 +27,7 @@ with open(bank_data) as csvfile:
     great_month = ""
     least_month = ""
     
-#for loop for csv reader
+
 #for loop for all output components
     for row in csvreader:
         month_counter = (month_counter + 1)
